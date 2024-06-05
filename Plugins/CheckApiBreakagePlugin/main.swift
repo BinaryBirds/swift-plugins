@@ -12,14 +12,16 @@ import PackagePlugin
 struct CheckApiBreakagePlugin: CommandPlugin {
     
     func performCommand(context: PackagePlugin.PluginContext, arguments: [String]) async throws {
-        
-        print("")
-        print(context.pluginWorkDirectory.removingLastComponent())
-        print(context.package.directory)
-        
-        
-        let hackyPath = context.package.directory.string + "/.build/checkouts/swift-plugins"
-        try performCommand(context, "sh", [hackyPath + "/scripts/check-api-breakage.sh"], arguments)
+        let scriptFilePath = context.pluginWorkDirectory.appending("check-api-breakage.sh").string
+        let fm = FileManager.default
+        if !fm.fileExists(atPath: scriptFilePath) {
+            do {
+                try scriptToRun.write(toFile: scriptFilePath, atomically: true, encoding: String.Encoding.utf8)
+            } catch let error{
+                print(error.localizedDescription)
+            }
+        }
+        try performCommand(context, "sh", [scriptFilePath], arguments)
     }
     
     private func listDir(path: Path) {
@@ -48,5 +50,29 @@ struct CheckApiBreakagePlugin: CommandPlugin {
         try process.run()
         process.waitUntilExit()
     }
+    
+    var scriptToRun = """
+        #!/usr/bin/env bash
+        set -euo pipefail
+
+        log() { printf -- "%s\n" "$*" >&2; }
+
+        REPO_ROOT="$(git -C "$PWD" rev-parse --show-toplevel)"
+
+        git fetch -t
+        REV_LIST=$(git rev-list --tags --max-count=1)
+        if [ ! -z "${REV_LIST}" ]; then
+            LATEST_TAG=$(git describe --tags ${REV_LIST})
+            swift package diagnose-api-breaking-changes "$LATEST_TAG" 2>&1 > api-breakage-output.log || {
+                NUM=$(cat api-breakage-output.log|grep "💔"|wc -l)
+                log "❌ Found ${NUM} API breakages."
+                cat api-breakages.log
+                exit 0;
+            }
+            log "✅ Found no API breakages."
+        else
+            log "✅ The repository has no tags yet."
+        fi
+    """
     
 }

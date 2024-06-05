@@ -12,7 +12,7 @@ import PackagePlugin
 struct RunChmodPlugin: CommandPlugin {
     
     func performCommand(context: PackagePlugin.PluginContext, arguments: [String]) async throws {
-        try performCommand(context, "make", ["run-chmod"], arguments)
+        try performCommand(context, "sh", ["./scripts/run-chmod"], arguments)
     }
     
     private func performCommand(

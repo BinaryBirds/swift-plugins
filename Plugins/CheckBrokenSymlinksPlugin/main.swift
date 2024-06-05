@@ -12,7 +12,7 @@ import PackagePlugin
 struct CheckLocalSwiftDependenciesPlugin: CommandPlugin {
     
     func performCommand(context: PackagePlugin.PluginContext, arguments: [String]) async throws {
-        try performCommand(context, "make", ["check-broken-symlinks"], arguments)
+        try performCommand(context, "sh", ["./scripts/check-api-breakage.sh"], arguments)
     }
     
     private func performCommand(

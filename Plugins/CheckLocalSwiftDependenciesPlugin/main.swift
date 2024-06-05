@@ -12,7 +12,7 @@ import PackagePlugin
 struct CheckLocalSwiftDependenciesPlugin: CommandPlugin {
     
     func performCommand(context: PackagePlugin.PluginContext, arguments: [String]) async throws {
-        try performCommand(context, "make", ["check-local-swift-dependencies"], arguments)
+        try performCommand(context, "sh", ["./scripts/check-local-swift-dependencies"], arguments)
     }
     
     private func performCommand(

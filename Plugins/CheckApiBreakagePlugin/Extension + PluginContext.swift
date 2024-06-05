@@ -39,7 +39,7 @@ extension PackagePlugin.PluginContext {
         let tool = try self.tool(named: "sh")
         let process = Process()
         process.launchPath = tool.path.string
-        process.arguments = [shFileName]
+        process.arguments = [scriptFilePath]
         try process.run()
         process.waitUntilExit()
     }

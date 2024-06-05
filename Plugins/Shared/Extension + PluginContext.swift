@@ -9,9 +9,8 @@ import Foundation
 import PackagePlugin
 
 /*
-Sharing code/data between plugins are limited and don't wanna use symlinking, maybe in the future, this
+Sharing data between plugins are limited and need to use symlinking, maybe in the future, this
 can be shared easily between plugins
-
 more info here:
 https://forums.swift.org/t/difficulty-sharing-code-between-swift-package-manager-plugins/61690/6
 */
@@ -35,7 +34,7 @@ extension PackagePlugin.PluginContext {
             }
         }
         
-        // run sh file
+        
         let tool = try self.tool(named: "bash")
         let process = Process()
         process.launchPath = tool.path.string

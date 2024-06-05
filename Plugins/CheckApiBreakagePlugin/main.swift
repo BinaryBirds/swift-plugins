@@ -13,10 +13,26 @@ struct CheckApiBreakagePlugin: CommandPlugin {
     
     func performCommand(context: PackagePlugin.PluginContext, arguments: [String]) async throws {
         
-        print(context.pluginWorkDirectory)
+        print("")
+        print(context.pluginWorkDirectory.removingLastComponent())
         print(context.package.directory)
         
-        try performCommand(context, "sh", [context.package.directory.string + "/scripts/check-api-breakage.sh"], arguments)
+        
+        let hackyPath = context.package.directory.string + "/.build/checkouts/swift-plugins"
+        try performCommand(context, "sh", [hackyPath + "/scripts/check-api-breakage.sh"], arguments)
+    }
+    
+    private func listDir(path: Path) {
+        let fm = FileManager.default
+        do {
+            let items = try fm.contentsOfDirectory(atPath: path.string)
+
+            for item in items {
+                print("Found \(item)")
+            }
+        } catch {
+            // failed to read directory – bad permissions, perhaps?
+        }
     }
     
     private func performCommand(

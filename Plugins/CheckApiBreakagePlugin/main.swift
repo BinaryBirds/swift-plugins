@@ -12,7 +12,11 @@ import PackagePlugin
 struct CheckApiBreakagePlugin: CommandPlugin {
     
     func performCommand(context: PackagePlugin.PluginContext, arguments: [String]) async throws {
-        try performCommand(context, "sh", ["./scripts/check-api-breakage.sh"], arguments)
+        
+        print(context.pluginWorkDirectory)
+        print(context.package.directory)
+        
+        try performCommand(context, "sh", [context.package.directory.string + "/scripts/check-api-breakage.sh"], arguments)
     }
     
     private func performCommand(

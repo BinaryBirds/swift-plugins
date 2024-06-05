@@ -36,7 +36,7 @@ extension PackagePlugin.PluginContext {
         }
         
         
-        let tool = try self.tool(named: "sh")
+        let tool = try self.tool(named: "bash")
         let process = Process()
         process.launchPath = tool.path.string
         process.arguments = [scriptFilePath]

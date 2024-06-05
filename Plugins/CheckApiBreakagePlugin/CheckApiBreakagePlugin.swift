@@ -19,7 +19,7 @@ struct CheckApiBreakagePlugin: CommandPlugin {
     #!/usr/bin/env bash
     set -euo pipefail
 
-    log() { printf -- "%s\n" "$*" >&2; }
+    log() { printf -- "%s\\n" "$*" >&2; }
 
     REPO_ROOT="$(git -C "$PWD" rev-parse --show-toplevel)"
 

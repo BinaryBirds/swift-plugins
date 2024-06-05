@@ -18,7 +18,7 @@ let package = Package(
             capability: .command(
                 intent: .custom(
                     verb: "check-api-breakage",
-                    description: "runs scripts/check-api-breakage.sh"
+                    description: "runs check-api-breakage.sh"
                 )
             ),
             dependencies: []
@@ -28,7 +28,7 @@ let package = Package(
             capability: .command(
                 intent: .custom(
                     verb: "check-broken-symlinks",
-                    description: "runs scripts/check-broken-symlinks.sh"
+                    description: "runs check-broken-symlinks.sh"
                 )
             ),
             dependencies: []
@@ -38,17 +38,7 @@ let package = Package(
             capability: .command(
                 intent: .custom(
                     verb: "check-local-swift-dependencies",
-                    description: "runs scripts/check-local-swift-dependencies.sh"
-                )
-            ),
-            dependencies: []
-        ),
-        .plugin(
-            name: "RunChmodPlugin",
-            capability: .command(
-                intent: .custom(
-                    verb: "run-chmod",
-                    description: "runs scripts/run-chmod.sh"
+                    description: "runs check-local-swift-dependencies.sh"
                 )
             ),
             dependencies: []

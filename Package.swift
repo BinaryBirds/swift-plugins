@@ -11,6 +11,7 @@ let package = Package(
         .plugin(name: "CheckBrokenSymlinksPlugin", targets: ["CheckBrokenSymlinksPlugin"]),
         .plugin(name: "CheckLocalSwiftDependenciesPlugin", targets: ["CheckLocalSwiftDependenciesPlugin"]),
         .plugin(name: "CheckUnacceptableLanguagePlugin", targets: ["CheckUnacceptableLanguagePlugin"]),
+        .plugin(name: "GenerateContributorsListPlugin", targets: ["GenerateContributorsListPlugin"]),
         .plugin(name: "RunCleanPlugin", targets: ["RunCleanPlugin"]),
         .plugin(name: "RunSwiftFormatPlugin", targets: ["RunSwiftFormatPlugin"]),
     ],
@@ -52,6 +53,16 @@ let package = Package(
                 intent: .custom(
                     verb: "check-unacceptable-language",
                     description: "runs check-unacceptable-language.sh"
+                )
+            ),
+            dependencies: []
+        ),
+        .plugin(
+            name: "GenerateContributorsListPlugin",
+            capability: .command(
+                intent: .custom(
+                    verb: "generate-contributors-list",
+                    description: "runs generate-contributors-list.sh"
                 )
             ),
             dependencies: []

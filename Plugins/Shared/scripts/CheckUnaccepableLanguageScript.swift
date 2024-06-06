@@ -20,7 +20,7 @@ struct CheckUnaccepableLanguageScript: ScriptProtocol {
         log "Checking for unacceptable language..."
 
         if ! test -f ${UNACCEPTABLE_LANGUAGE_PATTERNS_PATH}; then
-            UNACCEPTABLE_LANGUAGE_PATTERNS_PATH="${CURRENT_SCRIPT_DIR}/unacceptable-language"
+            UNACCEPTABLE_LANGUAGE_PATTERNS_PATH="${CURRENT_SCRIPT_DIR}/unacceptable-language.txt"
             log "❗ There was no 'unacceptable-language.txt' file in the repository, so using the default values for the search."
 
             PATHS_WITH_UNACCEPTABLE_LANGUAGE=$(git -C "${REPO_ROOT}" grep \

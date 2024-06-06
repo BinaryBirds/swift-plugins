@@ -8,9 +8,12 @@ import PackagePlugin
 
 @main
 struct CheckApiBreakagePlugin: CommandPlugin {
-    
-    func performCommand(context: PackagePlugin.PluginContext, arguments: [String]) async throws {
+
+    func performCommand(
+        context: PackagePlugin.PluginContext,
+        arguments: [String]
+    ) async throws {
         try context.runScript(CheckApiBreakageScript())
     }
-    
+
 }

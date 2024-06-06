@@ -12,6 +12,7 @@ let package = Package(
         .plugin(name: "CheckLocalSwiftDependenciesPlugin", targets: ["CheckLocalSwiftDependenciesPlugin"]),
         .plugin(name: "CheckUnacceptableLanguagePlugin", targets: ["CheckUnacceptableLanguagePlugin"]),
         .plugin(name: "RunCleanPlugin", targets: ["RunCleanPlugin"]),
+        .plugin(name: "RunSwiftFormatPlugin", targets: ["RunSwiftFormatPlugin"]),
     ],
     dependencies: [],
     targets: [
@@ -55,13 +56,22 @@ let package = Package(
             ),
             dependencies: []
         ),
-        
         .plugin(
             name: "RunCleanPlugin",
             capability: .command(
                 intent: .custom(
                     verb: "run-clean",
                     description: "runs run-clean.sh"
+                )
+            ),
+            dependencies: []
+        ),
+        .plugin(
+            name: "RunSwiftFormatPlugin",
+            capability: .command(
+                intent: .custom(
+                    verb: "run-swift-format",
+                    description: "runs run-swift-format.sh"
                 )
             ),
             dependencies: []

@@ -16,12 +16,12 @@ struct CheckUnaccepableLanguageScript: ScriptProtocol {
         \(ScriptEnum.log.rawValue)
         \(ScriptEnum.directories.rawValue)
         
-        UNACCEPTABLE_LANGUAGE_PATTERNS_PATH="${REPO_ROOT}/unacceptable-language.txt"
+        UNACCEPTABLE_LANGUAGE_PATTERNS_PATH="${REPO_ROOT}/unacceptable-language"
         log "Checking for unacceptable language..."
 
         if ! test -f ${UNACCEPTABLE_LANGUAGE_PATTERNS_PATH}; then
-            UNACCEPTABLE_LANGUAGE_PATTERNS_PATH="${CURRENT_SCRIPT_DIR}/unacceptable-language.txt"
-            log "❗ There was no 'unacceptable-language.txt' file in the repository, so using the default values for the search."
+            UNACCEPTABLE_LANGUAGE_PATTERNS_PATH="${CURRENT_SCRIPT_DIR}/unacceptable-language"
+            log "❗ There was no 'unacceptable-language' file in the repository, so using the default values for the search."
 
             PATHS_WITH_UNACCEPTABLE_LANGUAGE=$(git -C "${REPO_ROOT}" grep \
             -l -F -w \

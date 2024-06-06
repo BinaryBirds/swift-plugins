@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  CheckBrokenSymlinksPlugin.swift
 //  
 //
 //  Created by Lengyel Gábor on 05/06/2024.
@@ -12,34 +12,7 @@ import PackagePlugin
 struct CheckBrokenSymlinksPlugin: CommandPlugin {
     
     func performCommand(context: PackagePlugin.PluginContext, arguments: [String]) async throws {
-        try context.runShFile("check-broken-symlinks.sh", scriptToRun)
+        try context.runScript(CheckBrokenSymlinksScript())
     }
-    
-    let scriptToRun = """
-    #!/usr/bin/env bash
-    set -euo pipefail
-    
-    echo $SHELL
-
-    log() { printf -- "%s\\n" "$*" >&2; }
-
-    REPO_ROOT="$(git -C "$PWD" rev-parse --show-toplevel)"
-
-    log "Checking for broken symlinks..."
-    NUM_BROKEN_SYMLINKS=0
-    while read -r -d '' file; do
-      if ! test -e "${REPO_ROOT}/${file}"; then
-        log "Broken symlink: ${file}"
-        ((NUM_BROKEN_SYMLINKS++))
-      fi
-    done < <(git -C "${REPO_ROOT}" ls-files -z)
-
-    if [ "${NUM_BROKEN_SYMLINKS}" -gt 0 ]; then
-      log "❌ Found ${NUM_BROKEN_SYMLINKS} broken symlinks."
-      exit 1
-    fi
-
-    log "✅ Found 0 broken symlinks."
-    """
     
 }

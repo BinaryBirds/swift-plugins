@@ -10,6 +10,7 @@ let package = Package(
         .plugin(name: "CheckApiBreakagePlugin", targets: ["CheckApiBreakagePlugin"]),
         .plugin(name: "CheckBrokenSymlinksPlugin", targets: ["CheckBrokenSymlinksPlugin"]),
         .plugin(name: "CheckLocalSwiftDependenciesPlugin", targets: ["CheckLocalSwiftDependenciesPlugin"]),
+        .plugin(name: "RunCleanPlugin", targets: ["RunCleanPlugin"]),
     ],
     dependencies: [],
     targets: [
@@ -39,6 +40,17 @@ let package = Package(
                 intent: .custom(
                     verb: "check-local-swift-dependencies",
                     description: "runs check-local-swift-dependencies.sh"
+                )
+            ),
+            dependencies: []
+        ),
+        
+        .plugin(
+            name: "RunCleanPlugin",
+            capability: .command(
+                intent: .custom(
+                    verb: "run-clean",
+                    description: "runs run-clean.sh"
                 )
             ),
             dependencies: []

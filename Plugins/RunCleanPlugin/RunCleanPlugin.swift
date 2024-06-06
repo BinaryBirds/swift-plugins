@@ -1,11 +1,9 @@
 //
 //  RunCleanPlugin.swift
 //  
-//
-//  Created by Lengyel Gábor on 06/06/2024.
+//  Created by gerp83 on 06/06/2024
 //
 
-import Foundation
 import PackagePlugin
 
 @main

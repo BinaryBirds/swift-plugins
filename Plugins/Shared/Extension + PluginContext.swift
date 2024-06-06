@@ -1,8 +1,7 @@
 //
 //  Extension + PluginContext.swift
 //  
-//
-//  Created by Lengyel Gábor on 05/06/2024.
+//  Created by gerp83 on 05/06/2024
 //
 
 import Foundation
@@ -10,28 +9,35 @@ import PackagePlugin
 
 /*
 Sharing data between plugins are limited and need to use symlinking, maybe in the future, this
-can be shared easily between plugins
+can be shared more easily between plugins
 more info here:
 https://forums.swift.org/t/difficulty-sharing-code-between-swift-package-manager-plugins/61690/6
 */
 extension PackagePlugin.PluginContext {
     
-    func runScript(_ script: ScriptProtocol) throws {
-        
-        let scriptFilePath = self.pluginWorkDirectory.appending(script.shFile()).string
+    func createFile(fileName: String, fileContent: String) throws -> String{
+        let filePath = self.pluginWorkDirectory.appending(fileName).string
         let fm = FileManager.default
         
-        // check sh file exist
-        if !fm.fileExists(atPath: scriptFilePath) {
+        // check if file exist
+        if !fm.fileExists(atPath: filePath) {
             do {
-                // create sh file
-                try script.scriptToRun().write(toFile: scriptFilePath, atomically: true, encoding: String.Encoding.utf8)
+                // create and write to file
+                try fileContent.write(toFile: filePath, atomically: true, encoding: String.Encoding.utf8)
             } catch let error{
                 print(error.localizedDescription)
             }
         }
         
-        
+        return filePath
+    }
+    
+    func runScript(_ script: ScriptProtocol) throws {
+        let scriptFilePath = try createFile(
+            fileName: script.shFile(),
+            fileContent: script.scriptToRun()
+        )
+    
         let tool = try self.tool(named: "bash")
         let process = Process()
         process.launchPath = tool.path.string
@@ -39,6 +45,5 @@ extension PackagePlugin.PluginContext {
         try process.run()
         process.waitUntilExit()
     }
-    
     
 }

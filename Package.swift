@@ -10,6 +10,7 @@ let package = Package(
         .plugin(name: "CheckApiBreakagePlugin", targets: ["CheckApiBreakagePlugin"]),
         .plugin(name: "CheckBrokenSymlinksPlugin", targets: ["CheckBrokenSymlinksPlugin"]),
         .plugin(name: "CheckLocalSwiftDependenciesPlugin", targets: ["CheckLocalSwiftDependenciesPlugin"]),
+        .plugin(name: "CheckUnacceptableLanguagePlugin", targets: ["CheckUnacceptableLanguagePlugin"]),
         .plugin(name: "RunCleanPlugin", targets: ["RunCleanPlugin"]),
     ],
     dependencies: [],
@@ -40,6 +41,16 @@ let package = Package(
                 intent: .custom(
                     verb: "check-local-swift-dependencies",
                     description: "runs check-local-swift-dependencies.sh"
+                )
+            ),
+            dependencies: []
+        ),
+        .plugin(
+            name: "CheckUnacceptableLanguagePlugin",
+            capability: .command(
+                intent: .custom(
+                    verb: "check-unacceptable-language",
+                    description: "runs check-unacceptable-language.sh"
                 )
             ),
             dependencies: []

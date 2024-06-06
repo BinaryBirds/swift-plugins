@@ -1,8 +1,7 @@
 //
 //  CheckApiBreakageScript.swift
-//  
 //
-//  Created by Lengyel Gábor on 06/06/2024.
+//  Created by gerp83 on 06/06/2024
 //
 
 struct CheckApiBreakageScript: ScriptProtocol {

@@ -1,11 +1,9 @@
 //
 //  CheckBrokenSymlinksPlugin.swift
 //  
-//
-//  Created by Lengyel Gábor on 05/06/2024.
+//  Created by gerp83 on 05/06/2024
 //
 
-import Foundation
 import PackagePlugin
 
 @main

@@ -28,7 +28,7 @@ struct CheckUnacceptableLanguagePlugin: CommandPlugin {
     """
     
     func performCommand(context: PackagePlugin.PluginContext, arguments: [String]) async throws {
-        let _ = try context.createFile(fileName: "unacceptable-language", fileContent: defaultUnaccepableLanguageValues)
+        let _ = try context.createFile(fileName: "unacceptable-language.txt", fileContent: defaultUnaccepableLanguageValues)
         try context.runScript(CheckUnaccepableLanguageScript())
     }
     

@@ -10,7 +10,7 @@ import PackagePlugin
 struct CheckLocalSwiftDependenciesPlugin: CommandPlugin {
     
     func performCommand(context: PackagePlugin.PluginContext, arguments: [String]) async throws {
-        try context.runScript(CheckUnaccepableLanguageScript())
+        try context.runScript(CheckLocalSwiftDependenciesScript())
     }
     
 }

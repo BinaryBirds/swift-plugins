@@ -47,8 +47,9 @@ extension PackagePlugin.PluginContext {
         let tool = try self.tool(named: "bash")
         let process = Process()
         process.launchPath = tool.path.string
-        if arguments != nil {
-            process.arguments = [scriptFilePath] + arguments!
+
+        if let arguments = arguments {
+            process.arguments = [scriptFilePath] + arguments
         }
         else {
             process.arguments = [scriptFilePath]

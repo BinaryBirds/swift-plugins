@@ -10,9 +10,14 @@ let package = Package(
         .plugin(name: "CheckApiBreakagePlugin", targets: ["CheckApiBreakagePlugin"]),
         .plugin(name: "CheckBrokenSymlinksPlugin", targets: ["CheckBrokenSymlinksPlugin"]),
         .plugin(name: "CheckLocalSwiftDependenciesPlugin", targets: ["CheckLocalSwiftDependenciesPlugin"]),
+        .plugin(name: "CheckOpenApiSecurityPlugin", targets: ["CheckOpenApiSecurityPlugin"]),
+        .plugin(name: "CheckOpenApiValidationPlugin", targets: ["CheckOpenApiValidationPlugin"]),
         .plugin(name: "CheckUnacceptableLanguagePlugin", targets: ["CheckUnacceptableLanguagePlugin"]),
         .plugin(name: "GenerateContributorsListPlugin", targets: ["GenerateContributorsListPlugin"]),
+        .plugin(name: "InstallSwiftFormatPlugin", targets: ["InstallSwiftFormatPlugin"]),
+        .plugin(name: "InstallSwiftOpenApiGeneratorPlugin", targets: ["InstallSwiftOpenApiGeneratorPlugin"]),
         .plugin(name: "RunCleanPlugin", targets: ["RunCleanPlugin"]),
+        .plugin(name: "RunOpenApiServerPlugin", targets: ["RunOpenApiServerPlugin"]),
         .plugin(name: "RunSwiftFormatPlugin", targets: ["RunSwiftFormatPlugin"]),
     ],
     dependencies: [],
@@ -48,6 +53,26 @@ let package = Package(
             dependencies: []
         ),
         .plugin(
+            name: "CheckOpenApiSecurityPlugin",
+            capability: .command(
+                intent: .custom(
+                    verb: "check-openapi-security",
+                    description: "runs check-openapi-security.sh"
+                )
+            ),
+            dependencies: []
+        ),
+        .plugin(
+            name: "CheckOpenApiValidationPlugin",
+            capability: .command(
+                intent: .custom(
+                    verb: "check-openapi-validation",
+                    description: "runs check-openapi-validation.sh"
+                )
+            ),
+            dependencies: []
+        ),
+        .plugin(
             name: "CheckUnacceptableLanguagePlugin",
             capability: .command(
                 intent: .custom(
@@ -68,6 +93,26 @@ let package = Package(
             dependencies: []
         ),
         .plugin(
+            name: "InstallSwiftFormatPlugin",
+            capability: .command(
+                intent: .custom(
+                    verb: "install-swift-format",
+                    description: "runs install-swift-format.sh"
+                )
+            ),
+            dependencies: []
+        ),
+        .plugin(
+            name: "InstallSwiftOpenApiGeneratorPlugin",
+            capability: .command(
+                intent: .custom(
+                    verb: "install-swift-openapi-generator",
+                    description: "runs install-swift-openapi-generator.sh"
+                )
+            ),
+            dependencies: []
+        ),
+        .plugin(
             name: "RunCleanPlugin",
             capability: .command(
                 intent: .custom(
@@ -78,11 +123,21 @@ let package = Package(
             dependencies: []
         ),
         .plugin(
-            name: "RunSwiftFormatPlugin",
+            name: "RunOpenApiServerPlugin",
             capability: .command(
                 intent: .custom(
                     verb: "run-swift-format",
                     description: "runs run-swift-format.sh"
+                )
+            ),
+            dependencies: []
+        ),
+        .plugin(
+            name: "RunSwiftFormatPlugin",
+            capability: .command(
+                intent: .custom(
+                    verb: "run-openapi-server",
+                    description: "runs run-openapi-server.sh"
                 )
             ),
             dependencies: []

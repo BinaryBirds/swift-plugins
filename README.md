@@ -17,17 +17,17 @@ Update the packages and you are ready.
 To list plugins call `swift package plugin --list`
 
 
-| Plugin Name                        | Verb                       | Description                         | Usage                                         |
-|------------------------------------|----------------------------|-------------------------------------|-----------------------------------------------|
-| **CheckApiBreakagePlugin**         | `check-api-breakage`       | Runs `check-api-breakage.sh`        | `swift package check-api-breakage --disable-sandbox`            |
-| **CheckBrokenSymlinksPlugin**      | `check-broken-symlinks`    | Runs `check-broken-symlinks.sh`     | `swift package check-broken-symlinks --disable-sandbox`         |
-| **CheckLocalSwiftDependenciesPlugin** | `check-local-swift-dependencies` | Runs `check-local-swift-dependencies.sh` | `swift package check-local-swift-dependencies --disable-sandbox` |
-| **CheckOpenApiSecurityPlugin**     | `check-openapi-security`   | Runs `check-openapi-security.sh`    | `swift package check-openapi-security --disable-sandbox`        |
-| **CheckOpenApiValidationPlugin**   | `check-openapi-validation` | Runs `check-openapi-validation.sh`  | `swift package check-openapi-validation --disable-sandbox`      |
-| **CheckUnacceptableLanguagePlugin**| `check-unacceptable-language` | Runs `check-unacceptable-language.sh` | `swift package check-unacceptable-language --disable-sandbox`   |
-| **GenerateContributorsListPlugin** | `generate-contributors-list` | Runs `generate-contributors-list.sh` | `swift package generate-contributors-list --disable-sandbox`    |
-| **InstallSwiftFormatPlugin**       | `install-swift-format`     | Runs `install-swift-format.sh`      | `swift package install-swift-format --disable-sandbox`          |
-| **InstallSwiftOpenApiGeneratorPlugin** | `install-swift-openapi-generator` | Runs `install-swift-openapi-generator.sh` | `swift package install-swift-openapi-generator --disable-sandbox` |
-| **RunCleanPlugin**                 | `run-clean`                | Runs `run-clean.sh`                 | `swift package run-clean --disable-sandbox`                     |
-| **RunOpenApiServerPlugin**         | `run-openapi-server`       | Runs `run-openapi-server.sh`        | `swift package run-openapi-server --disable-sandbox`            |
-| **RunSwiftFormatPlugin**           | `run-swift-format`         | Runs `run-swift-format.sh`          | `swift package run-swift-format --disable-sandbox`              |
+| Plugin Name                        | Description                         | Usage                                         |
+|------------------------------------|-------------------------------------|-----------------------------------------------|
+| **CheckApiBreakagePlugin**         | Runs `check-api-breakage.sh`        | `swift package check-api-breakage --disable-sandbox`|
+| **CheckBrokenSymlinksPlugin**      | Runs `check-broken-symlinks.sh`     | `swift package check-broken-symlinks --disable-sandbox`|
+| **CheckLocalSwiftDependenciesPlugin** | Runs `check-local-swift-dependencies.sh` | `swift package check-local-swift-dependencies --disable-sandbox`|
+| **CheckOpenApiSecurityPlugin**     | Runs `check-openapi-security.sh`    | `swift package check-openapi-security --disable-sandbox`|
+| **CheckOpenApiValidationPlugin**   | Runs `check-openapi-validation.sh`  | `swift package check-openapi-validation --disable-sandbox`|
+| **CheckUnacceptableLanguagePlugin**| Runs `check-unacceptable-language.sh` | `swift package check-unacceptable-language --disable-sandbox`|
+| **GenerateContributorsListPlugin** | Runs `generate-contributors-list.sh` | `swift package generate-contributors-list --disable-sandbox`|
+| **InstallSwiftFormatPlugin**       | Runs `install-swift-format.sh`      | `swift package install-swift-format --disable-sandbox`|
+| **InstallSwiftOpenApiGeneratorPlugin** | Runs `install-swift-openapi-generator.sh` | `swift package install-swift-openapi-generator --disable-sandbox`|
+| **RunCleanPlugin**                 | Runs `run-clean.sh`                 | `swift package run-clean --disable-sandbox`|
+| **RunOpenApiServerPlugin**         | Runs `run-openapi-server.sh`        | `swift package run-openapi-server --disable-sandbox`|
+| **RunSwiftFormatPlugin**           | Runs `run-swift-format.sh`          | `swift package run-swift-format --disable-sandbox`|

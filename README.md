@@ -16,18 +16,65 @@ Update the packages and you are ready.
 
 To list plugins call `swift package plugin --list`
 
+### CheckApiBreakagePlugin
 
-| Plugin Name                        | Description                         | Usage                                         |
-|------------------------------------|-------------------------------------|-----------------------------------------------|
-| **CheckApiBreakagePlugin**         | Runs `check-api-breakage.sh`        | `swift package check-api-breakage --disable-sandbox`|
-| **CheckBrokenSymlinksPlugin**      | Runs `check-broken-symlinks.sh`     | `swift package check-broken-symlinks --disable-sandbox`|
-| **CheckLocalSwiftDependenciesPlugin** | Runs `check-local-swift-dependencies.sh` | `swift package check-local-swift-dependencies --disable-sandbox`|
-| **CheckOpenApiSecurityPlugin**     | Runs `check-openapi-security.sh`    | `swift package check-openapi-security --disable-sandbox`|
-| **CheckOpenApiValidationPlugin**   | Runs `check-openapi-validation.sh`  | `swift package check-openapi-validation --disable-sandbox`|
-| **CheckUnacceptableLanguagePlugin**| Runs `check-unacceptable-language.sh` | `swift package check-unacceptable-language --disable-sandbox`|
-| **GenerateContributorsListPlugin** | Runs `generate-contributors-list.sh` | `swift package generate-contributors-list --disable-sandbox`|
-| **InstallSwiftFormatPlugin**       | Runs `install-swift-format.sh`      | `swift package install-swift-format --disable-sandbox`|
-| **InstallSwiftOpenApiGeneratorPlugin** | Runs `install-swift-openapi-generator.sh` | `swift package install-swift-openapi-generator --disable-sandbox`|
-| **RunCleanPlugin**                 | Runs `run-clean.sh`                 | `swift package run-clean --disable-sandbox`|
-| **RunOpenApiServerPlugin**         | Runs `run-openapi-server.sh`        | `swift package run-openapi-server --disable-sandbox`|
-| **RunSwiftFormatPlugin**           | Runs `run-swift-format.sh`          | `swift package run-swift-format --disable-sandbox`|
+This plugin runs a script to check for any breaking changes in the API. It uses the swift package diagnose-api-breaking-changes command to analyze the current API against the last tagged version and reports any breaking changes found.
+
+Usage: `swift package check-api-breakage --disable-sandbox`
+	
+### CheckBrokenSymlinksPlugin
+This plugin runs a script to find and report broken symbolic links within the repository. It iterates over all files tracked by Git and checks if their symlink targets exist.
+
+Usage: `swift package check-broken-symlinks --disable-sandbox`
+
+### CheckLocalSwiftDependenciesPlugin
+This plugin checks for local Swift package dependencies in the repository. It scans Package.swift files for local dependencies defined using .package(path:) and reports any occurrences.
+
+Usage: `swift package check-local-swift-dependencies --disable-sandbox`
+	
+### CheckOpenApiSecurityPlugin
+This plugin runs a security analysis on the OpenAPI specification using OWASP ZAP. It runs the zap-api-scan.py script inside a Docker container to check for security vulnerabilities in the OpenAPI definition.
+
+Usage: `swift package check-openapi-security --disable-sandbox`
+
+### CheckOpenApiValidationPlugin
+This plugin validates the OpenAPI specification for compliance with the OpenAPI standard. It uses the openapi-spec-validator tool inside a Docker container to perform the validation.
+
+Usage: `swift package check-openapi-validation --disable-sandbox`
+
+### CheckUnacceptableLanguagePlugin
+This plugin checks the codebase for unacceptable language patterns. It uses a predefined list of unacceptable terms and searches the codebase for any matches, reporting them if found.
+
+Usage: `swift package check-unacceptable-language --disable-sandbox`
+
+### GenerateContributorsListPlugin
+This plugin generates a list of contributors for the repository. It uses the git shortlog command to gather commit information and formats it into a CONTRIBUTORS.txt file.
+
+Usage: `swift package generate-contributors-list --disable-sandbox`
+
+### InstallSwiftFormatPlugin
+This plugin installs the swift-format tool.
+
+Usage: `swift package install-swift-format --disable-sandbox`
+
+### InstallSwiftOpenApiGeneratorPlugin
+This plugin installs the Swift OpenAPI generator tool.
+
+Usage: `swift package install-swift-openapi-generator --disable-sandbox`
+	
+### RunCleanPlugin
+This plugin cleans up build artifacts and other temporary files from the repository. 
+
+Usage: `swift package run-clean --disable-sandbox`
+
+### 	RunOpenApiServerPlugin
+This plugin serves the OpenAPI documentation using an Nginx server.
+
+Usage: `swift package run-openapi-server --disable-sandbox`
+
+### RunSwiftFormatPlugin
+This plugin formats Swift code using the swift-format tool. It runs the tool on all Swift files in the repository, optionally fixing some of the issues if the --fix argument is provided.
+
+Usage: `swift package run-swift-format --disable-sandbox` or `swift package run-swift-format --fix --disable-sandbox` for fixing
+
+

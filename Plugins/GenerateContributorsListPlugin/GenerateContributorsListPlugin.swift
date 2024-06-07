@@ -7,7 +7,7 @@
 import PackagePlugin
 
 @main
-struct CheckUnacceptableLanguagePlugin: CommandPlugin {
+struct GenerateContributorsListPlugin: CommandPlugin {
 
     func performCommand(
         context: PackagePlugin.PluginContext,

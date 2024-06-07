@@ -16,13 +16,16 @@ struct CheckLocalSwiftDependenciesScript: ScriptProtocol {
             \(ScriptEnum.log.rawValue)
             \(ScriptEnum.directories.rawValue)
 
+            # Read paths to check from git, ensuring paths are properly handled as array
             read -ra PATHS_TO_CHECK <<< "$( \
                 git -C "${REPO_ROOT}" ls-files -z \
                 "Package.swift" \
                 | xargs -0 \
             )"
-            if [ ! -z ${PATHS_TO_CHECK+x} ]; then   #check for unbound
+            # Check if the PATHS_TO_CHECK array is not empty
+            if [ ! -z ${PATHS_TO_CHECK+x} ]; then
                 for FILE_PATH in "${PATHS_TO_CHECK[@]}"; do
+                    # Check if the file contains local Swift package references
                     if [[ $(grep ".package(path:" "${FILE_PATH}"|wc -l) -ne 0 ]] ; then
                         log "❌ The '${FILE_PATH}' file contains local Swift package reference(s)."
                         exit 1;

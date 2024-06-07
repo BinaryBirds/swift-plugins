@@ -16,7 +16,10 @@ struct GenerateContributorsListScript: ScriptProtocol {
             \(ScriptEnum.log.rawValue)
             \(ScriptEnum.directories.rawValue)
 
+            # Retrieve the list of contributors
             contributors=$( git shortlog -sne --all | cut -f2 | sed 's/^/- /' )
+            
+            # Generate the CONTRIBUTORS.txt file with the list of contributors
             cat > "$REPO_ROOT/CONTRIBUTORS.txt" <<- EOF
             ### Contributors
             $contributors

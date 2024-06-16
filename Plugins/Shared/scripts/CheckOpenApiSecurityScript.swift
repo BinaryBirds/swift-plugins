@@ -17,13 +17,13 @@ struct CheckOpenApiSecurityScript: ScriptProtocol {
             \(ScriptEnum.directories.rawValue)
 
             OPENAPI_YAML_LOCATION="${REPO_ROOT}/openapi";
-            
+
             # Check if the OpenAPI directory exists
             if ! test -f ${OPENAPI_YAML_LOCATION}; then
                 log "❗Openapi location not found."
                 exit 0
             fi
-            
+
             # Run the owasp/zap2docker-weekly Docker container to check the OpenAPI YAML file for security issues
             docker run --rm --name "check-openapi-security" \
                 -v "${OPENAPI_YAML_LOCATION}:/app" \

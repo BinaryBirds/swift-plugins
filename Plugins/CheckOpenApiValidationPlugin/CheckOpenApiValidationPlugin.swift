@@ -3,7 +3,7 @@
 //
 //  Created by gerp83 on 07/06/2024
 //
-    
+
 import PackagePlugin
 
 @main

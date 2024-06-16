@@ -126,8 +126,8 @@ let package = Package(
             name: "RunOpenApiServerPlugin",
             capability: .command(
                 intent: .custom(
-                    verb: "run-swift-format",
-                    description: "runs run-swift-format.sh"
+                    verb: "run-openapi-server",
+                    description: "runs run-openapi-server.sh"
                 )
             ),
             dependencies: []
@@ -136,8 +136,8 @@ let package = Package(
             name: "RunSwiftFormatPlugin",
             capability: .command(
                 intent: .custom(
-                    verb: "run-openapi-server",
-                    description: "runs run-openapi-server.sh"
+                    verb: "run-swift-format",
+                    description: "runs run-swift-format.sh"
                 )
             ),
             dependencies: []

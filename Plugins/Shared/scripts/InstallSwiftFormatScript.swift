@@ -3,7 +3,7 @@
 //
 //  Created by gerp83 on 07/06/2024
 //
-    
+
 struct InstallSwiftFormatScript: ScriptProtocol {
 
     func shFile() -> String {
@@ -18,7 +18,12 @@ struct InstallSwiftFormatScript: ScriptProtocol {
 
             #https://github.com/apple/swift-format
             VERSION="510.1.0"
-
+            while getopts v: flag
+            do
+                case "${flag}" in
+                    v) VERSION=${OPTARG};;
+                esac
+            done
             curl -L -o "${VERSION}.tar.gz" "https://github.com/apple/swift-format/archive/refs/tags/${VERSION}.tar.gz"
             tar -xf "${VERSION}.tar.gz"
             cd "swift-format-${VERSION}"

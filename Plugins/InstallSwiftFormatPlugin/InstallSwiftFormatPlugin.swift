@@ -13,7 +13,7 @@ struct InstallSwiftFormatPlugin: CommandPlugin {
         context: PackagePlugin.PluginContext,
         arguments: [String]
     ) async throws {
-        try context.runScript(InstallSwiftFormatScript())
+        try context.runScript(InstallSwiftFormatScript(), arguments)
     }
 
 }

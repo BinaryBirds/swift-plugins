@@ -18,7 +18,7 @@ struct CheckBrokenSymlinksScript: ScriptProtocol {
 
             log "Checking for broken symlinks..."
             NUM_BROKEN_SYMLINKS=0
-            
+
             # Loop through each file listed by git
             while read -r -d '' file; do
                 # Check if the symlink is broken (i.e., target does not exist)
@@ -37,5 +37,5 @@ struct CheckBrokenSymlinksScript: ScriptProtocol {
             log "✅ Found 0 broken symlinks."
             """
     }
-    
+
 }

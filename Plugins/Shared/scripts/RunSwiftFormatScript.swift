@@ -18,7 +18,7 @@ struct RunSwiftFormatScript: ScriptProtocol {
 
             # Check if SWIFTFORMAT_BIN is set, otherwise find the swift-format binary in the PATH
             SWIFTFORMAT_BIN=${SWIFTFORMAT_BIN:-$(command -v swift-format)}
-            
+
             # If SWIFTFORMAT_BIN is not set, log an error message
             if [[ -z "${SWIFTFORMAT_BIN}" ]]; then
                 log "❌ SWIFTFORMAT_BIN unset and no swift-format on PATH"
@@ -26,10 +26,10 @@ struct RunSwiftFormatScript: ScriptProtocol {
             fi
              
             SWIFT_FORMAT_JSON_PATH="${REPO_ROOT}/.swift-format"
-            
+
             # Check if the swift-format configuration file exists in the repository
             if ! test -f ${SWIFT_FORMAT_JSON_PATH}; then
-            
+
                 # If not found, use the configuration file from the current script directory
                 SWIFT_FORMAT_JSON_PATH="${CURRENT_SCRIPT_DIR}/.swift-format"
                 log "❗ There was no ‘.swift-format’ file in the repository, so using the one included with the plugin."
@@ -37,7 +37,7 @@ struct RunSwiftFormatScript: ScriptProtocol {
 
             # Default format command to lint with strict mode
             FORMAT_COMMAND=(lint --strict)
-            
+
             # Check if any arguments are passed and if "--fix" is among them, change the command to format in place
             for arg in "$@"; do
               if [ "$arg" == "--fix" ]; then

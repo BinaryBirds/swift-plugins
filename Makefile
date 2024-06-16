@@ -39,5 +39,5 @@ lint:
 	swift package --disable-sandbox run-swift-format
 
 format:
-	swift package --disable-sandbox run-swift-format
+	swift package --disable-sandbox run-swift-format --fix
 	

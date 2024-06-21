@@ -7,7 +7,7 @@ This repository contains a set of Swift plugins designed to streamline various t
 Add the repository as a dependency:
 
 ```swift
-.package(url: "https://github.com/BinaryBirds/swift-plugins", from: "0.0.1"),
+.package(url: "https://github.com/BinaryBirds/swift-plugins", from: "0.0.2"),
 ```
 
 Update the packages and you are ready.
@@ -61,13 +61,18 @@ Usage: `swift package --disable-sandbox install-swift-format`
 This plugin installs the Swift OpenAPI generator tool, the version can be optionally defined using the `-v` parameter.
 
 Usage: `swift package --disable-sandbox install-swift-openapi-generator`
+
+### RunChmodPlugin
+It runs `chmod` on the `.build/plugins` directory to make sure the Bash scripts are executable.
+
+Usage: `swift package --disable-sandbox run-chmod`
 	
 ### RunCleanPlugin
 This plugin cleans up build artifacts and other temporary files from the repository. 
 
 Usage: `swift package --disable-sandbox run-clean`
 
-### 	RunOpenApiServerPlugin
+### RunOpenApiServerPlugin
 This plugin serves the OpenAPI documentation using an Nginx server.
 
 Usage: `swift package --disable-sandbox run-openapi-server`

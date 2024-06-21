@@ -56,7 +56,7 @@ struct RunSwiftFormatScript: ScriptProtocol {
             if [ "${SWIFT_FORMAT_RC}" -ne 0 ]; then
                 log "❌ Running swift-format produced errors."
                 log "To fix, run the following command:"
-                log "swift package run-swift-format --fix --disable-sandbox"
+                log "swift package --disable-sandbox run-swift-format --fix"
                 exit 1
             fi
             log "✅ Ran swift-format with no errors."

@@ -31,6 +31,9 @@ install-openapi:
 
 run-clean:
 	swift package --disable-sandbox run-clean
+	
+chmod:
+	swift package --disable-sandbox run-chmod
 
 server:
 	swift package --disable-sandbox run-openapi-server

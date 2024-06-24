@@ -17,7 +17,6 @@ enum ScriptEnum: String {
 
     case directories = """
         CURRENT_SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-        chmod -R oug+x "${CURRENT_SCRIPT_DIR}"
         REPO_ROOT="$(git -C "$PWD" rev-parse --show-toplevel)"
         """
 

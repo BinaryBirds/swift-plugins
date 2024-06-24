@@ -16,6 +16,7 @@ let package = Package(
         .plugin(name: "GenerateContributorsListPlugin", targets: ["GenerateContributorsListPlugin"]),
         .plugin(name: "InstallSwiftFormatPlugin", targets: ["InstallSwiftFormatPlugin"]),
         .plugin(name: "InstallSwiftOpenApiGeneratorPlugin", targets: ["InstallSwiftOpenApiGeneratorPlugin"]),
+        .plugin(name: "RunChmodPlugin", targets: ["RunChmodPlugin"]),
         .plugin(name: "RunCleanPlugin", targets: ["RunCleanPlugin"]),
         .plugin(name: "RunOpenApiServerPlugin", targets: ["RunOpenApiServerPlugin"]),
         .plugin(name: "RunSwiftFormatPlugin", targets: ["RunSwiftFormatPlugin"]),
@@ -108,6 +109,16 @@ let package = Package(
                 intent: .custom(
                     verb: "install-swift-openapi-generator",
                     description: "runs install-swift-openapi-generator.sh"
+                )
+            ),
+            dependencies: []
+        ),
+        .plugin(
+            name: "RunChmodPlugin",
+            capability: .command(
+                intent: .custom(
+                    verb: "run-chmod",
+                    description: "runs run-chmod.sh"
                 )
             ),
             dependencies: []

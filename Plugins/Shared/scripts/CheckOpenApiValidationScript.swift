@@ -17,9 +17,8 @@ struct CheckOpenApiValidationScript: ScriptProtocol {
             \(ScriptEnum.directories.rawValue)
 
             OPENAPI_YAML_LOCATION="${REPO_ROOT}/openapi";
-
             # Check if the OpenAPI directory exists
-            if ! test -f ${OPENAPI_YAML_LOCATION}; then
+            if ! [ -d ${OPENAPI_YAML_LOCATION} ]; then
                 log "❗Openapi location not found."
                 exit 0
             fi

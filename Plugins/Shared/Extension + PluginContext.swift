@@ -13,8 +13,13 @@ import PackagePlugin
 //https://forums.swift.org/t/difficulty-sharing-code-between-swift-package-manager-plugins/61690/6
 extension PackagePlugin.PluginContext {
 
-    func createFile(fileName: String, fileContent: String) throws -> String {
-        let filePath = self.pluginWorkDirectory.appending(fileName).string
+    func createFile(
+        fileVersion: String = "",
+        fileName: String,
+        fileContent: String
+    ) throws -> String {
+        let filePath = self.pluginWorkDirectory
+            .appending(fileVersion + fileName).string
         let fm = FileManager.default
 
         // check if file exist
@@ -40,6 +45,7 @@ extension PackagePlugin.PluginContext {
         _ arguments: [String]? = nil
     ) throws {
         let scriptFilePath = try createFile(
+            fileVersion: ScriptEnum.version.rawValue + "_",
             fileName: script.shFile(),
             fileContent: script.scriptToRun()
         )

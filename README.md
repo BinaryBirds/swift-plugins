@@ -7,7 +7,7 @@ This repository contains a set of Swift plugins designed to streamline various t
 Add the repository as a dependency:
 
 ```swift
-.package(url: "https://github.com/BinaryBirds/swift-plugins", from: "0.0.2"),
+.package(url: "https://github.com/BinaryBirds/swift-plugins", from: "0.0.4"),
 ```
 
 Update the packages and you are ready.
@@ -53,12 +53,12 @@ This plugin generates a list of contributors for the repository. It uses the git
 Usage: `swift package --disable-sandbox generate-contributors-list`
 
 ### InstallSwiftFormatPlugin
-This plugin installs the swift-format tool, the version can be optionally defined using the `-v` parameter.
+This plugin installs the swift-format tool, the version can be optionally defined using the `-v` parameter. The default version is `510.1.0`.
 
 Usage: `swift package --disable-sandbox install-swift-format`
 
 ### InstallSwiftOpenApiGeneratorPlugin
-This plugin installs the Swift OpenAPI generator tool, the version can be optionally defined using the `-v` parameter.
+This plugin installs the Swift OpenAPI generator tool, the version can be optionally defined using the `-v` parameter. The default version is `1.2.1`.
 
 Usage: `swift package --disable-sandbox install-swift-openapi-generator`
 
@@ -73,14 +73,19 @@ This plugin cleans up build artifacts and other temporary files from the reposit
 Usage: `swift package --disable-sandbox run-clean`
 
 ### RunOpenApiServerPlugin
-This plugin serves the OpenAPI documentation using an Nginx server.
+This plugin serves the OpenAPI documentation using an Nginx server. This try to run inside a Docker container.
+
+Optional parameters:
+
+- `-n` : add a custom identifier for the container, the default is `openapi-server`
+- `-p` : add a custom port to bind it to the container, the default is `8888:80`
 
 Usage: `swift package --disable-sandbox run-openapi-server`
 
 ### RunSwiftFormatPlugin
-This plugin formats Swift code using the swift-format tool. It runs the tool on all Swift files in the repository, optionally fixing some of the issues if the `--fix` argument is provided.
+This plugin checks/formats Swift code using the swift-format tool. It runs the tool on all Swift files in the repository, optionally fixing some of the issues if the `--fix` argument is provided.
 
-Usage: `swift package --disable-sandbox run-swift-format` or `swift package--disable-sandbox run-swift-format --fix` for fixing
+Usage: `swift package --disable-sandbox run-swift-format` for run lint or `swift package--disable-sandbox run-swift-format --fix` for fixing
 
 ## Makefile
 

@@ -6,6 +6,8 @@
 
 enum ScriptEnum: String {
 
+    case version = "4"
+
     case head = """
         #!/usr/bin/env bash
         set -euo pipefail

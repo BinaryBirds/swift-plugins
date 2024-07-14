@@ -13,7 +13,7 @@ struct RunOpenApiServerPlugin: CommandPlugin {
         context: PackagePlugin.PluginContext,
         arguments: [String]
     ) async throws {
-        try context.runScript(RunOpenApiServerScript())
+        try context.runScript(RunOpenApiServerScript(), arguments)
     }
 
 }

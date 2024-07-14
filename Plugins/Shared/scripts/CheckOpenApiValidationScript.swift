@@ -7,7 +7,7 @@
 struct CheckOpenApiValidationScript: ScriptProtocol {
 
     func shFile() -> String {
-        return "check-openapi-validation"
+        return "check-openapi-validation.sh"
     }
 
     func scriptToRun() -> String {

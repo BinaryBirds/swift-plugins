@@ -7,7 +7,7 @@
 struct RunOpenApiServerScript: ScriptProtocol {
 
     func shFile() -> String {
-        return "run-openapi-server"
+        return "run-openapi-server.sh"
     }
 
     func scriptToRun() -> String {
@@ -23,10 +23,20 @@ struct RunOpenApiServerScript: ScriptProtocol {
                 exit 0
             fi
 
+            NAME="openapi-server"
+            PORT="8888:80"
+            while getopts ":n:p:": flag
+            do
+                case "${flag}" in
+                    n) NAME=${OPTARG};;
+                    p) PORT=${OPTARG};;
+                esac
+            done
+
             # Run the Docker container to serve the OpenAPI files using Nginx
-            docker run --rm --name "run-openapi-server" \
+            docker run --rm --name "${NAME}" \
                 -v "${OPENAPI_YAML_LOCATION}:/usr/share/nginx/html" \
-                -p 8888:80 nginx
+                -p ${PORT} nginx
             """
     }
 

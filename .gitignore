@@ -7,3 +7,5 @@ DerivedData/
 .swiftpm/xcode/package.xcworkspace/contents.xcworkspacedata
 .netrc
 .swiftpm/xcode/xcshareddata/xcschemes/swift-plugins-Package.xcscheme
+openapi/index.html
+openapi/openapi.yaml

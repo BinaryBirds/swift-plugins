@@ -21,7 +21,11 @@ let package = Package(
         .plugin(name: "RunOpenApiServerPlugin", targets: ["RunOpenApiServerPlugin"]),
         .plugin(name: "RunSwiftFormatPlugin", targets: ["RunSwiftFormatPlugin"]),
     ],
-    dependencies: [],
+    dependencies: [
+        //.package(url: "https://github.com/binarybirds/shell-kit", branch: "feature/changeDeprecated"),
+        .package(url: "https://github.com/binarybirds/shell-kit", from: "1.0.0"),
+       
+    ],
     targets: [
         .plugin(
             name: "CheckApiBreakagePlugin",
@@ -41,7 +45,9 @@ let package = Package(
                     description: "runs check-broken-symlinks.sh"
                 )
             ),
-            dependencies: []
+            dependencies: [
+                .product(name: "ShellKit", package: "shell-kit"),
+            ]
         ),
         .plugin(
             name: "CheckLocalSwiftDependenciesPlugin",
@@ -151,7 +157,8 @@ let package = Package(
                     description: "runs run-swift-format.sh"
                 )
             ),
-            dependencies: []
+            dependencies: [
+            ]
         ),
     ]
 )
